@@ -1,6 +1,18 @@
-import express, {Application} from 'express';
-const app:Application = express();
-const array:number[] = [1,2,3]
-const PORT:number = 5000;
+import dotenv from 'dotenv';
+dotenv.config();
+import express, { Application} from 'express';
+import sequelize from './db/db';
+import UserRouter from './api/routers/Users';
 
-app.listen(5000,()=>console.log('server is running'))
+const app:Application = express();
+app.use('/api/users', UserRouter);
+
+app.listen(process.env.PORT || 6000,async()=>{
+    console.log('server is running')
+    try{
+        await sequelize.authenticate()
+        console.log("database has connected")
+    }catch(err){
+        console.error(err.message)
+    }
+})
