@@ -14,13 +14,12 @@
         "src/**/*.ts": [
             "eslint --fix",
             "git add",
-            "npm run jest:staged"
+            "npm run jest"
         ]
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged",
-            "pre-push": "npm run jest"
+            "pre-commit": "lint-staged"
         }
     },
     "repository": {
