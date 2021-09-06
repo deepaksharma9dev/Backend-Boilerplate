@@ -9,14 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const getCurrentAge = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const dateOfBirth = req.params.doB;
-    const currentYear = new Date();
-    if ((currentYear.getFullYear() - Number(dateOfBirth)) <= 18) {
-        return next(new Error('Invalid Input'));
+const errorHandler = (err, req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    if (err.message === "Invalid Input") {
+        return res.status(400).send(err.message);
     }
-    res
-        .status(200)
-        .json({ age: `${currentYear.getFullYear() - Number(dateOfBirth)}` });
 });
-exports.default = getCurrentAge;
+exports.default = errorHandler;

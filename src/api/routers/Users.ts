@@ -1,7 +1,9 @@
-import express from "express";
-import getCurrentAge from "../controllers/users";
+import express from 'express';
+import getCurrentAge from '../controllers/users';
 const UserRouter = express.Router();
 
-UserRouter.get("/YourAge/:doB", getCurrentAge);
+
+import asyncHandler from '../../asyncHandler/asyncHandler';
+UserRouter.get('/YourAge/:doB', asyncHandler(getCurrentAge));
 
 export default UserRouter;

@@ -1,4 +1,5 @@
 "use strict";
-test("demo", function () {
-  expect(2 + 2).toBe(4);
+test('demo', () => {
+    expect(2 + 2).toBe(4);
 });
+test('abc', () => { });
