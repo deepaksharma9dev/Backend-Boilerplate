@@ -7,9 +7,11 @@ const getCurrentAge = async (
 ) => {
   const dateOfBirth = req.params.doB;
   const currentYear = new Date();
+
   if((currentYear.getFullYear() - Number(dateOfBirth))<=18){
         return next(new Error('Invalid Input'))
   }
+
   res
     .status(200)
     .json({ age: `${currentYear.getFullYear() - Number(dateOfBirth)}` });
